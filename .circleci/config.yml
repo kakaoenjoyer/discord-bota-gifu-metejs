@@ -1,0 +1,72 @@
+import random
+import discord
+from discord.ext import commands
+import json
+
+import lightbulb
+bot = commands.Bot(command_prefix = '/' )
+x = []
+
+
+
+@bot.command()
+async def palidziba(ctx):
+    await ctx.send('komanda 1 \n/gif lai dabūtu bildi video vai gifu\n\n  komanda 2 \n/ie lai iesūtitu savas bildes formātā /ie kautkads bildes links\n\nkomanda 3\n /iz tapat ka /ie tikai lai izdzēstu bildi' )
+
+
+
+@bot.command()
+async def ie(ctx,message):
+
+
+    mes = message+'\n'
+    mystring = mes.replace('https://','')
+    mystring = mystring[:mystring.index(".")]
+    print(mystring)
+    with open(r"C:\Users\Administrator\Downloads\porno aizsardziba.txt", 'r') as L:
+        j = L.readlines()
+        print(j)
+        L.close()
+    j= [i.split('.')[0] for i in j]
+    print(j)
+
+
+    if mystring in j:
+        await ctx.send('https://tenor.com/view/rick-roll-rick-astley-dance-meme-mic-gif-17243789')
+
+
+
+    elif 'https' in message:
+
+
+        with open(r"C:\Users\Administrator\Downloads\sample.txt",'a') as f:
+            f.write(message)
+            f.write('\n')
+            f.close()
+        await ctx.send('paldies')
+@bot.command()
+async def gif(ctx):
+    with open(r"C:\Users\Administrator\Downloads\sample.txt", 'r') as h:
+        y=h.readlines()
+        h.close()
+        j = random.choice(y)
+    await ctx.send(j)
+@bot.command()
+async def iz(ctx,zina):
+
+    with open(r"C:\Users\Administrator\Downloads\sample.txt", 'r') as f:
+
+        # read data line by line
+        data = f.readlines()
+
+    # open file in write mode
+    with open(r"C:\Users\Administrator\Downloads\sample.txt", 'w') as f:
+
+        for line in data:
+
+            # condition for data to be deleted
+            if line.strip("\n") != zina:
+                f.write(line)
+    await ctx.send(zina+' izdzēsts')
+
+bot.run('OTkyNDc3MDA0MjkxMTEzMTIx.GCALB3.ZrYHBTf-Zsl9WJBpZ2V7Fz---lR3_w8mKpZTfg')
